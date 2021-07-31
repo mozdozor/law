@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 
 
 def index(request):
+    print("asd")
     sliders=SliderModel.objects.filter(is_slider="yes")
     context = {
         "sliders":sliders,
