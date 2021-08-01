@@ -1,13 +1,12 @@
 from django.http import request
 from django.shortcuts import render
-from .models import SliderModel,IletisimBilgilerModel
+from .models import AlanModel, AvukatModel, HakkimizdaModel, NedenBizImageModel, NedenBizModeli, SliderModel,IletisimBilgilerModel, TimelineModel
 from .forms import IletisimModelForm
 from django.core.mail import send_mail
 # Create your views here.
 
 
 def index(request):
-    print("asd")
     sliders=SliderModel.objects.filter(is_slider="yes")
     context = {
         "sliders":sliders,
@@ -36,3 +35,40 @@ def iletisim(request):
         "bilgiler":bilgiler,
     }
     return render(request,"iletişim.html",context)
+
+
+
+def hakkimizda(request): 
+    hakkimizda=HakkimizdaModel.objects.first()
+    timelines=TimelineModel.objects.all()
+    avukatlar=AvukatModel.objects.all()
+    context = {
+        "hakkimizda":hakkimizda,
+        "timelines":timelines,
+        "avukatlar":avukatlar,
+    }
+    return render(request,"hakkimizda.html",context)
+
+
+
+def CalismaAlanlari(request): 
+    alanlar=AlanModel.objects.all()
+    nedenbizler=NedenBizModeli.objects.all()
+    image=NedenBizImageModel.objects.first()
+    context = {
+        "alanlar":alanlar,
+        "nedenbizler":nedenbizler,
+        "image":image,
+    }
+    return render(request,"alanlarımız.html",context)
+
+
+
+
+def SingleHakkimizda(request): 
+    hakkimizda=HakkimizdaModel.objects.first()
+    context = {
+       "hakkimizda":hakkimizda,
+    }
+    return render(request,"single_hakkimizda.html",context)
+

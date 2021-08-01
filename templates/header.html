@@ -45,9 +45,9 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
                         <a href="{% url 'index' %}"  class="nav-item nav-link active">Anasayfa</a>
-                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
-                        <a href="service.html" class="nav-item nav-link">Alanlarımız</a>
-                        <a href="team.html" class="nav-item nav-link">Avukatlarımız</a>
+                        <a href="{% url 'hakkimizda' %}" class="nav-item nav-link">Hakkımızda</a>
+                        <a href="{% url 'CalismaAlanlari' %}" class="nav-item nav-link">Alanlarımız</a>
+                
                         <a href="portfolio.html" class="nav-item nav-link">ÖNCEKİ Davalarımız</a>
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>

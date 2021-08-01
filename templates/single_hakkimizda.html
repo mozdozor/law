@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+           
+            
+            {% block content %}
+                
+
+                
+            <!-- Page Header Start -->
+            <div class="page-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>Hakkımızda</h2>
+                        </div>
+                        <div class="col-12">
+                            <a href="{% url 'index' %}">Anasayfa</a>
+                            <a href="">Hakkımızda</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Header End -->
+
+
+            <!-- Single Page Start -->
+            <div class="single">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Hakkımızda</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <img class="img-fluid rounded" src="{{hakkimizda.image_single.url}}" alt="Image">
+                           
+                           
+                                {{hakkimizda.yazi|safe}}
+                            
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Page End -->
+
+
+      
+
+            {% endblock content %}
