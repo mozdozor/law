@@ -48,7 +48,10 @@ class IletisimBilgilerModel(models.Model):
     konum=models.CharField(max_length=250,blank=False,null=False)
     telefon=models.CharField(max_length=250,blank=False,null=False)
     email=models.CharField(max_length=250,blank=False,null=False)
-    
+    twitter=models.CharField(max_length=100,blank=False,null=False)
+    facebook=models.CharField(max_length=100,blank=True,null=True)
+    linkedin=models.CharField(max_length=100,blank=True,null=True)
+    instagram=models.CharField(max_length=100,blank=True,null=True)
        
     class Meta:
         db_table="IletisimBilgiler"
@@ -66,8 +69,9 @@ class IletisimModel(models.Model):
     )
     isim=models.CharField(max_length=250,blank=False,null=False)
     email=models.CharField(max_length=250,blank=False,null=False)
-    subject=models.CharField(max_length=250,blank=False,null=False)
-    message=models.TextField(blank=False,null=False)
+    subject=models.CharField(max_length=250,blank=False,null=False,verbose_name="Konu")
+    phone=models.CharField(max_length=11,blank=False,null=False,verbose_name="Telefon")
+    message=models.TextField(blank=False,null=False,verbose_name="Mesaj")
     created_date=models.DateTimeField(auto_now_add=True)
     okundu_mu=models.CharField(max_length=10,choices=STATUS,default="no",verbose_name="Okundu mu?")
        
@@ -193,3 +197,40 @@ class NedenBizImageModel(models.Model):
         
     def __str__(self):  
         return self.image.url
+
+
+
+
+
+class SoruModel(models.Model):
+    question=models.CharField(max_length=250,blank=False,null=False)
+    answer=RichTextField(blank=False,null=False)
+    created_date=models.DateTimeField(auto_now_add=True)
+    updated_date=models.DateTimeField(auto_now=True)
+       
+    class Meta:
+        db_table="SoruModel"
+        verbose_name = 'Soru'
+        verbose_name_plural = 'Sorular'
+        
+    def __str__(self):  
+        return self.question
+
+
+
+class ReviewModel(models.Model):
+    name=models.CharField(max_length=250,blank=False,null=False)
+    dava=models.CharField(max_length=250,blank=False,null=False)
+    review=RichTextField(max_length=200,blank=False,null=False)
+    created_date=models.DateTimeField(auto_now_add=True)
+    updated_date=models.DateTimeField(auto_now=True)
+       
+    class Meta:
+        db_table="ReviewModel"
+        verbose_name = 'Müşteri Değerlendirmesi'
+        verbose_name_plural = 'Müşteri Değerlendirmeleri'
+        
+    def __str__(self):  
+        return self.dava
+
+

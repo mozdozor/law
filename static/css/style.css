@@ -655,6 +655,7 @@ a:focus {
     text-align: center;
     background: #121518;
     margin-bottom: 30px;
+   
 }
 
 .service .service-icon {
@@ -1032,6 +1033,7 @@ a:focus {
 }
 
 .testimonial .testimonial-item p {
+   
     color: #999999;
     font-size: 16px;
     margin: 0;
@@ -1278,6 +1280,7 @@ a:focus {
     margin: 0;
     font-size: 16px;
     color: #999999;
+    
 }
 
 @media (max-width: 767.98px) {

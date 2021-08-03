@@ -1,15 +1,32 @@
 from django.http import request
 from django.shortcuts import render
-from .models import AlanModel, AvukatModel, HakkimizdaModel, NedenBizImageModel, NedenBizModeli, SliderModel,IletisimBilgilerModel, TimelineModel
+from .models import AlanModel, AvukatModel, HakkimizdaModel, NedenBizImageModel, NedenBizModeli, ReviewModel, SliderModel,IletisimBilgilerModel, SoruModel, TimelineModel
 from .forms import IletisimModelForm
 from django.core.mail import send_mail
+from django.contrib import messages
 # Create your views here.
 
 
 def index(request):
     sliders=SliderModel.objects.filter(is_slider="yes")
+    hakkimizda=HakkimizdaModel.objects.first()
+    nedenbizler=NedenBizModeli.objects.all()
+    image=NedenBizImageModel.objects.first()
+    alanlar=AlanModel.objects.all()
+    avukatlar=AvukatModel.objects.all()
+    sorular=SoruModel.objects.all()
+    reviews=ReviewModel.objects.all()
     context = {
         "sliders":sliders,
+        "hakkimizda":hakkimizda,
+        "alanlar":alanlar,
+        "nedenbizler":nedenbizler,
+        "image":image,
+        "avukatlar":avukatlar,
+        "sorular":sorular,
+        "reviews":reviews,
+        "1":"collapseOne",
+        
     }
     return render(request,"index.html",context)
 
@@ -24,10 +41,14 @@ def iletisim(request):
             form.save()
             send_mail(
                 form.cleaned_data["subject"]+" ( "+form.cleaned_data["isim"]+" )",
-                form.cleaned_data["message"]+"\n\n\n ( "+form.cleaned_data["email"]+" )",
+                form.cleaned_data["message"]+"\n\n\n ( "+form.cleaned_data["email"]+" )"+"\n\n"+form.cleaned_data["phone"],
                 form.cleaned_data["email"],
                 [IletisimBilgilerModel.objects.first().email,],
             )
+            messages.success(request,"Mesajınız başarılı bir şekilde iletilmiştir.En kısa zamanda sizinle iletişime geçilecektir.")
+                
+        else:
+            messages.error(request,"Lütfen formu hatasız doldurunuz")
     form = IletisimModelForm()
     bilgiler=IletisimBilgilerModel.objects.first()
     context={

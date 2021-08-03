@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'ckeditor',  
     'ckeditor_uploader',
     'law',
+    'Admin',
     'django_cleanup.apps.CleanupConfig', # should be placed after your apps
 ]
 

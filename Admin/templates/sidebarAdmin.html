@@ -1,0 +1,96 @@
+
+{% load static %}
+
+        <!-- SIDEBAR -->
+        <aside class="site-sidebar scrollbar-enabled" data-suppress-scroll-x="true">
+            <!-- User Details -->
+            <div class="side-user">
+                <figure class="side-user-bg" style="background-image: url(assetsAdmin/demo/user-image-cropped.jpg)">
+                   <img src="{% static 'assetsAdmin/demo/user-image-cropped.jpg' %}" alt="" class="d-none">
+                </figure>
+                <div class="col-sm-12 text-center p-0 clearfix">
+                    <div class="d-inline-block pos-relative mr-b-10"><span class="avatar-text">{{ request.user.get_full_name|slice:"1" }}</span>
+                        <figure class="avatar-img thumb-sm mr-b-0 d-none">
+                            <img src="{% static 'assetsAdmin/demo/users/user1.jpg' %}" class="rounded-circle" alt="">
+                        </figure>
+                    </div>
+                    <!-- /.d-inline-block -->
+                    <div class="lh-14 mr-t-5 sidebar-collapse-hidden">
+                        <h6 class="hide-menu side-user-heading">{{request.user.get_full_name}}</h6><small class="hide-menu">{{request.user.email}}</small>
+                    </div>
+                </div>
+                <!-- /.col-sm-12 -->
+            </div>
+            <!-- /.side-user -->
+            <!-- Sidebar Menu -->
+            <nav class="sidebar-nav">
+                <ul class="nav in side-menu">
+                    <li class="menu-item-has-children current-page"><a href="index.html"><i class="list-icon material-icons">home</i> <span class="hide-menu">Anasayfa</span></a>
+                        <ul class="list-unstyled sub-menu">
+                            <li><a href="{% url 'indexAdmin' %}">Anasayfa</a>
+                            </li>
+                            <li><a href="{% url 'indexAdmin' %}">Slider</a>
+                            </li>
+                            <li><a href="{% url 'indexAdmin' %}">Müşteri Değerlendirmeleri</a>
+                            </li>
+                            <li><a href="{% url 'indexAdmin' %}">Sorular</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">info</i> <span class="hide-menu">Hakkımızda</span></a>
+                        <ul class="list-unstyled sub-menu">
+                            <li><a href="">Hakkımızda</a>
+                            </li>
+                            <li><a href="">Zaman Çizelgesi</a>
+                            </li>
+                            <li><a href="">Avukatlar</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">work</i> <span class="hide-menu">Çalışma Alanları</span></a>
+                        <ul class="list-unstyled sub-menu">
+                            <li><a href="">Çalışma Alanlarımız</a>
+                            </li>
+                            <li><a href="">Neden Biz?</a>
+                            </li>
+                            <li><a href="">Neden Biz Fotoğrafı</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">account_box</i> <span class="hide-menu">Profil İşlemleri</span></a>
+                        <ul class="list-unstyled sub-menu">
+                            <li><a href="">Profilim</a>
+                            </li>
+                            <li><a href="">Profil Güncelle</a>
+                            </li>
+                            <li><a href="">Şifre Güncelle</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">contact_mail</i> <span class="hide-menu">İletişim</span></a>
+                        <ul class="list-unstyled sub-menu">
+                            <li><a href="">Mailler</a>
+                            </li>
+                            <li><a href="">İletişim Bilgilerimiz</a>
+                            </li>
+                          
+                            
+                            
+                        </ul>
+                    </li>
+
+                   
+                </ul>
+                <!-- /.side-menu -->
+            </nav>
+            <!-- /.sidebar-nav -->
+        </aside>
+        <!-- /.site-sidebar -->

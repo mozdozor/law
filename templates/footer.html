@@ -1,15 +1,21 @@
   
   {% load static %}
-  
+  {% load footer_list %}
+{% footer_list as hakkimizda_footer %}
+{% load alanlar_list %}
+{% alanlar_list as alanlar_footer %}
+{% load iletisim_list %}
+{% iletisim_list as iletisim_footer %}
+
   <!-- Footer Start -->
             <div class="footer">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="footer-about">
-                                <h2>About Us</h2>
+                                <h2>Hakkımızda</h2>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu lectus a leo tristique dictum nec non quam. Suspendisse convallis, tortor eu placerat rhoncus, lorem quam iaculis felis, sed eleifend lacus neque id eros. Integer convallis volutpat neque
+                                    {{hakkimizda_footer.yazi|truncatechars:255|safe}}
                                 </p>
                             </div>
                         </div>
@@ -17,36 +23,36 @@
                             <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="footer-link">
-                                <h2>Services Areas</h2>
-                                <a href="">Civil Law</a>
-                                <a href="">Family Law</a>
-                                <a href="">Business Law</a>
-                                <a href="">Education Law</a>
-                                <a href="">Immigration Law</a>
+                                <h2>Çalışma Alanlarımız</h2>
+                                
+                                {% for alan in alanlar_footer %}
+                                <a href="">{{alan.name}}</a>
+                                {% endfor %}
+                                    
+                               
+                               
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="footer-link">
-                                <h2>Useful Pages</h2>
-                                <a href="">About Us</a>
-                                <a href="">Practices</a>
-                                <a href="">Attorneys</a>
-                                <a href="">Case Studies</a>
-                                <a href="">FAQs</a>
+                                <h2>Yararlı Sayfalar</h2>
+                                <a href="{% url 'hakkimizda' %}">Hakkımızda</a>
+                                <a href="{% url 'CalismaAlanlari' %}">Çalışma Alanlarımız</a>
+                                <a href="{% url 'iletisim' %}">İletişim</a>
+                                
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="footer-contact">
-                                <h2>Get In Touch</h2>
-                                <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
-                                <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
-                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <h2>İletişim</h2>
+                                <p><i class="fa fa-map-marker-alt"></i>{{iletisim_footer.konum}}</p>
+                                <p><i class="fa fa-phone-alt"></i>{{iletisim_footer.telefon}}</p>
+                                <p><i class="fa fa-envelope"></i>{{iletisim_footer.email}}</p>
                                 <div class="footer-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-youtube"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="{{iletisim_footer.twitter}}"><i class="fab fa-twitter"></i></a>
+                                    <a href="{{iletisim_footer.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="{{iletisim_footer.instagram}}"><i class="fab fa-instagram"></i></a>
+                                    <a href="{{iletisim_footer.linkedin}}"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +60,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="container footer-menu">
+                <!-- <div class="container footer-menu">
                     <div class="f-menu">
                         <a href="">Terms of use</a>
                         <a href="">Privacy policy</a>
@@ -62,7 +68,7 @@
                         <a href="">Help</a>
                         <a href="">FQAs</a>
                     </div>
-                </div>
+                </div> -->
                 <div class="container copyright">
                     <div class="row">
                         <div class="col-md-6">

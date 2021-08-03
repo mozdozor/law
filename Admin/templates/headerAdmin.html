@@ -1,0 +1,128 @@
+{% load static %}
+
+
+
+
+<!-- HEADER & TOP NAVIGATION -->
+<nav class="navbar">
+    <div class="container-fluid px-0 align-items-stretch">
+        <!-- Logo Area -->
+        <div class="navbar-header">
+            <a href="{% url 'indexAdmin' %}" class="navbar-brand">
+                <img class="logo-expand" alt="" src="{% static 'assetsAdmin/img/logo-dark.png' %}">
+                <img class="logo-collapse" alt="" src="{% static 'assetsAdmin/img/logo-collapse.png' %}">
+                <!-- <p>BonVue</p> -->
+            </a>
+        </div>
+        <!-- /.navbar-header -->
+        <!-- Left Menu & Sidebar Toggle -->
+        <ul class="nav navbar-nav">
+            <li class="sidebar-toggle dropdown"><a href="javascript:void(0)" class="ripple"><i
+                        class="feather feather-menu list-icon fs-20"></i></a>
+            </li>
+        </ul>
+        <!-- /.navbar-left -->
+        <!-- Search Form -->
+        <form class="navbar-search d-none d-sm-block" role="search"><i class="feather feather-search list-icon"></i>
+            <input type="search" class="search-query" placeholder="Search anything..."> <a href="javascript:void(0);"
+                class="remove-focus"><i class="feather feather-x"></i></a>
+        </form>
+        <!-- /.navbar-search -->
+        <div class="spacer"></div>
+        <!-- Right Menu -->
+        <ul class="nav navbar-nav d-none d-lg-flex ml-2 ml-0-rtl">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                        class="feather feather-bell list-icon"></i> <span class="button-pulse 
+                        {% if noPublished or emails %}
+                            bg-danger
+                        {% endif %}
+                            "></span></a>
+                <div class="dropdown-menu dropdown-left dropdown-card dropdown-card-dark animated flipInY">
+                    <div class="card">
+                        <header class="card-header d-flex justify-content-between mb-0"><a href="javascript:void(0);"><i
+                                    class="feather feather-bell color-primary" aria-hidden="true"></i></a> <span
+                                class="heading-font-family flex-1 text-center fw-400">Notifications ({{ adding}})</span> <a
+                                href="javascript:void(0);"><i class="feather feather-settings color-content"></i></a>
+                        </header>
+                        <ul class="card-body list-unstyled dropdown-list-group">
+
+                            
+                            
+                                <li><a href="" class="media"><span class="d-flex thumb-xs user--online"><img
+                                    src="{{nots.writer.avatar.url}}" class="rounded-circle"
+                                    alt=""> </span><span class="media-body"><span
+                                    class="heading-font-family media-heading">{{nots.writer.get_full_name}}</span><br> <span
+                                    class="media-content">Yeni bir yazı gönderdim!</span></span><br>{{nots.title}}</a>
+                                </li>
+                            
+                            {% for email in emails %}
+                          
+                            {% if forloop.counter < 3  %}
+                            <li><a href="" class="media"><span class="d-flex thumb-xs user--online"><img
+                                src="" class="rounded-circle"
+                                alt=""> </span><span class="media-body"><span
+                                class="heading-font-family media-heading">{{email.name}} ({{email.subject}})</span><br> <span
+                                class="media-content">Yeni bir mesaj gönderdim!</span></span><br></a>
+                             </li>
+                            {% endif %}
+                                
+                            
+                        {% endfor %}
+
+                        </ul>
+                        <!-- /.dropdown-list-group -->
+                        <footer class="card-footer text-center"><a href=""
+                                class="headings-font-family text-uppercase fs-13">See all activity</a>
+                        </footer>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.dropdown-menu -->
+            </li>
+            <!-- /.dropdown -->
+            <li><a href="" class="right-sidebar-toggle"><i
+                        class="feather feather-settings list-icon"></i></a>
+            </li>
+        </ul>
+        <!-- /.navbar-right -->
+        <!-- User Image with Dropdown -->
+        <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle dropdown-toggle-user ripple"
+                    data-toggle="dropdown"><span class="avatar thumb-xs2"><img src="{{request.user.avatar.url}}"
+                            class="rounded-circle" alt=""> <i
+                            class="feather feather-chevron-down list-icon"></i></span></a>
+                <div
+                    class="dropdown-menu dropdown-left dropdown-card dropdown-card-dark dropdown-card-profile animated flipInY">
+                    <div class="card">
+                        <header class="card-header d-flex mb-0"><a href=""
+                                class="col-md-4 text-center"><i class="feather feather-user-plus align-middle"></i>
+                            </a><a href="" class="col-md-4 text-center"><i
+                                    class="feather feather-settings align-middle"></i> </a>
+                            <a href="{% url 'logoutAdmin' %}" class="col-md-4 text-center"><i
+                                    class="feather feather-power align-middle"></i>
+                            </a>
+                        </header>
+                        <ul class="list-unstyled card-body">
+                            <li><a href=""><span><span class="align-middle">Manage Accounts</span></span></a>
+                            </li>
+                            <li><a href=""><span><span class="align-middle">Change Password</span></span></a>
+                            </li>
+                            <li><a href=""><span><span class="align-middle">Check Inbox</span></span></a>
+                            </li>
+                            <li><a href="{% url 'logoutAdmin' %}"><span><span class="align-middle">Sign
+                                            Out</span></span></a>
+                            </li>
+                        </ul>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.dropdown-card-profile -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-nav -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- /.navbar -->

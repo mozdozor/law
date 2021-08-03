@@ -1,0 +1,163 @@
+{% extends 'baseAdmin.html' %}
+
+
+
+{% block title %}
+<title>Yazılar</title>
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+
+<main class="main-wrapper clearfix">
+    <!-- Page Title Area -->
+    <div class="container-fluid">
+        <div class="row page-title clearfix">
+            <div class="page-title-left">
+                <h6 class="page-title-heading mr-0 mr-r-5">E-Commerce Products</h6>
+                <p class="page-title-description mr-0 d-none d-md-inline-block">statistics, charts and events</p>
+            </div>
+            <!-- /.page-title-left -->
+            <div class="page-title-right d-none d-sm-inline-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">E-Commerce Products</li>
+                </ol>
+            </div>
+            <!-- /.page-title-right -->
+        </div>
+        <!-- /.page-title -->
+    </div>
+    <!-- /.container-fluid -->
+    <!-- =================================== -->
+    <!-- Different data widgets ============ -->
+    <!-- =================================== -->
+    <div class="container-fluid">
+        <div class="widget-list">
+            <div class="row">
+                <div class="col-md-12 widget-holder">
+                    <div class="widget-bg-transparent">
+                        <div class="widget-body clearfix">
+                            <!-- Products List -->
+                            <div class="ecommerce-products list-unstyled row">
+
+
+
+                                {% if not yazilar %}
+                               
+                                <h3 style="color: white;">Hiç yazı bulunamadı.</h3>
+                                {% endif %}
+
+                                
+                             
+
+
+
+                                {% for yazi in yazilar %}
+
+
+
+                                <div class="product col-12 col-sm-6 col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a href="{% url 'showPostAdmin' yazi.slug %}">
+                                                <img style="width: 320px;; height: 200px;" src="{{yazi.image.url}}"
+                                                    alt=""> <span class="triangle-top-right"></span>
+                                            </a>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <h5 class="product-title">{{yazi.title}}</h5>
+                                            </div>
+                                            <!-- /.d-flex --> <span class="text-muted">{{yazi.writer}} (
+                                                {{yazi.created_date.date}})</span><br><a style="float: right;" onclick="return confirm('Bu yazıyı silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deletePostAdmin' yazi.slug %}" class="btn btn-danger btn-xs">Sil</a>
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer">
+                                            <div class="product-info"><a href="javascript:void(0);"><i
+                                                        class="list-icon material-icons">remove_red_eye</i>&nbsp;
+                                                    {{yazi.readingCount}}</a>
+                                            </div>
+                                            <div class="product-info"><a href="javascript:void(0);"><i
+                                                        class="list-icon material-icons">favorite_border</i>&nbsp;
+                                                    1,184</a>
+                                            </div>
+                                            <div class="product-info"><a href="javascript:void(0);"><i
+                                                        class="list-icon material-icons">comment</i>&nbsp;
+                                                    {{yazi.yorumlar.count}}</a>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-footer -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.product -->
+                                {% endfor %}
+
+
+
+                            </div>
+                            <!-- /.ecommerce-products -->
+                            <!-- Product Navigation -->
+
+                            {% if  yazilar %}
+
+
+
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-lg d-flex justify-content-center">
+
+                                        {% if yazilar.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{yazilar.previous_page_number}}"
+                                                tabindex="-1" aria-disabled="true">Önceki Sayfa</a>
+                                        </li>
+                                        {% else %}
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Önceki</a>
+                                        </li>
+                                        {% endif %}
+
+                                        <li class="page-item"><a class="page-link" href="#">{{yazilar.number}}</a></li>
+                                        {% if yazilar.has_next %}
+                                        <li class="page-item"><a class="page-link"
+                                                href="?page={{yazilar.next_page_number}}">Sonraki</a></li>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{yazilar.paginator.num_pages}}">Son
+                                                Sayfa</a>
+                                        </li>
+
+
+                                        {% endif %}
+
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            {% endif %}
+                            <!-- /.col-md-12 -->
+                        </div>
+                        <!-- /.widget-body -->
+                    </div>
+                    <!-- /.widget-bg -->
+                </div>
+                <!-- /.widget-holder -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.widget-list -->
+    </div>
+    <!-- /.container-fluid -->
+</main>
+<!-- /.main-wrappper -->
+
+
+{% endblock content %}

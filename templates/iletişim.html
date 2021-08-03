@@ -16,7 +16,7 @@
                             <h2>İletişime Geçin</h2>
                         </div>
                         <div class="col-12">
-                            <a href="">Anasayfa</a>
+                            <a href="{% url 'index' %}">Anasayfa</a>
                             <a href="">İletişim</a>
                         </div>
                     </div>
@@ -31,6 +31,31 @@
                     <div class="section-header">
                         <h2>İletişim</h2>
                     </div>
+
+                    
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+
+            {% if message.tags == "error" %}
+            <div class="alert alert-danger" role="alert">
+
+                <center><strong>{{message}}</strong></center>
+            </div>
+            {% else %}
+            <div class="alert alert-success" role="alert">
+
+                <center><strong>{{message}}</strong></center>
+            </div>
+            {% endif %}
+
+
+
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="contact-info">
@@ -66,7 +91,7 @@
 
                                     {{form.as_p}}
                                     <div>
-                                        <button class="btn" type="submit">Send Message</button>
+                                        <button class="btn" type="submit">Gönder</button>
                                     </div>
                                     <!-- <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Your Name" required="required" />

@@ -1,0 +1,105 @@
+{% extends 'baseAdmin.html' %}
+
+
+
+
+{% block content %}
+
+
+
+
+<!-- /.site-sidebar -->
+<main class="main-wrapper clearfix">
+    <!-- Page Title Area -->
+    <div class="container-fluid">
+        <div class="row page-title clearfix">
+            <div class="page-title-left">
+                <h6 class="page-title-heading mr-0 mr-r-5">Form Validation</h6>
+                <p class="page-title-description mr-0 d-none d-md-inline-block">statistics, charts and events</p>
+            </div>
+
+            <div class="page-title-right d-none d-sm-inline-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Form Validation</li>
+                </ol>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="widget-list">
+            <div class="row">
+
+
+
+                <div class="col-md-12 widget-holder">
+                    <div class="widget-bg">
+                        <div class="widget-body clearfix">
+
+                            <form action="{% url 'updateProfileAdmin' %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <center>
+                                    <figure class="profile-user-avatar thumb-md">
+                                        <img src="{{request.user.avatar.url}}" alt="User Wall">
+                                    </figure>
+                                </center>
+                                <br>
+
+
+                                {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+
+                                    {% if message.tags == "error" %}
+                                    <div class="alert alert-danger" role="alert">
+
+
+                                        <center><strong>{{message}}</strong></center>
+                                    </div>
+                                    {% else %}
+                                    <div class="alert alert-success" role="alert">
+
+                                        <center><strong>{{message}}</strong></center>
+                                    </div>
+                                    {% endif %}
+
+
+
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+
+
+                                <br><br>
+
+                                {{form.as_p}}
+
+
+                                <br><br>
+
+
+                                <div class=" col-sm-9 ">
+                                    <button style="width: 150px;" class="btn btn-primary" type="submit">Kaydet</button>
+
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+{% endblock content %}

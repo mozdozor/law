@@ -1,16 +1,19 @@
+       {% load static %}
        <!-- Top Bar Start -->
        <div class="top-bar">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{% url 'index' %}">
                             <h1>Kanun</h1>
-                            <!-- <img src="img/logo.jpg" alt="Logo"> -->
-                        </a>
+                            <!-- <img src="{% static 'img/logo.jpg' %}" alt="Logo">
+                        </a> -->
                     </div>
                 </div>
-                <div class="col-lg-9">
+
+
+                <!-- <div class="col-lg-9">
                     <div class="top-bar-right">
                         <div class="text">
                             <h2>8:00 - 9:00</h2>
@@ -27,7 +30,10 @@
                             <a href=""><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                </div>
+                </div> -->
+
+
+
             </div>
         </div>
     </div>
@@ -46,9 +52,9 @@
                     <div class="navbar-nav mr-auto">
                         <a href="{% url 'index' %}"  class="nav-item nav-link active">Anasayfa</a>
                         <a href="{% url 'hakkimizda' %}" class="nav-item nav-link">Hakkımızda</a>
-                        <a href="{% url 'CalismaAlanlari' %}" class="nav-item nav-link">Alanlarımız</a>
+                        <a href="{% url 'CalismaAlanlari' %}" class="nav-item nav-link">Çalışma Alanlarımız</a>
                 
-                        <a href="portfolio.html" class="nav-item nav-link">ÖNCEKİ Davalarımız</a>
+                        <!-- <a href="portfolio.html" class="nav-item nav-link">ÖNCEKİ Davalarımız</a> -->
                         <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu">
@@ -59,7 +65,7 @@
                         <a href="{% url 'iletisim' %}" class="nav-item nav-link">İLETİŞİM</a>
                     </div>
                     <div class="ml-auto">
-                        <a class="btn" href="https://htmlcodex.com/law-firm-website-template">Randevu Al</a>
+                        <a class="btn" href="{% url 'iletisim' %}">Randevu Al</a>
                     </div>
                 </div>
             </nav>

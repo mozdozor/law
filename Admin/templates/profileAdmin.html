@@ -1,0 +1,111 @@
+{% extends 'baseAdmin.html' %}
+
+
+
+
+{% block content %}
+
+
+
+
+<!-- /.site-sidebar -->
+<main class="main-wrapper clearfix">
+    <!-- Page Title Area -->
+    <div class="container-fluid">
+        <div class="row page-title clearfix">
+            <div class="page-title-left">
+                <h6 class="page-title-heading mr-0 mr-r-5">Form Validation</h6>
+                <p class="page-title-description mr-0 d-none d-md-inline-block">statistics, charts and events</p>
+            </div>
+
+            <div class="page-title-right d-none d-sm-inline-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Form Validation</li>
+                </ol>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+        <div class="widget-list">
+            <div class="row">
+
+
+
+                <div class="col-md-12 widget-holder">
+                    <div class="widget-bg">
+                        <div class="widget-body clearfix">
+
+                                {% csrf_token %}
+                                <center>
+                                <figure class="profile-user-avatar thumb-md">
+                                    <img src="{{request.user.avatar.url}}" alt="User Wall">
+                                </figure>
+                            </center>
+                             <br><br><br>
+
+                                <div class="form-group row">
+                                    <label class="text-left text-sm-right col-form-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input style="color: blanchedalmond;" type="text" disabled name="email" value="{{request.user.first_name}}" class="form-control" required=""
+                                            data-validation="email">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="text-left text-sm-right col-form-label col-sm-3">Surname</label>
+                                    <div class="col-sm-9">
+                                        <input style="color: blanchedalmond;" name="user" disabled=""  type="text" value="{{request.user.last_name}}" class="form-control" >
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="text-left text-sm-right col-form-label col-sm-3">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" style="color: blanchedalmond;"  class="form-control" disabled value="{{request.user.email}}"
+                                            >
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="text-left text-sm-right col-form-label col-sm-3">
+                                        Username</label>
+                                    <div class="col-sm-9">
+                                        <input style="color: blanchedalmond;"  type="text" name="pass" class="form-control"
+                                           disabled value="{{request.user.username}}">
+                                    </div>
+
+                                </div>
+
+                              
+                                <br><br><br>
+                              
+
+                                <div class="ml-auto col-sm-9 ">
+                                    <a href="{% url 'updateProfileAdmin' %}"><button class="btn btn-primary" type="submit">Profil Güncelleme</button></a>&nbsp;&emsp;&emsp;&emsp;&emsp;
+                                    <a href="{% url 'changePasswordAdmin' %}"><button class="btn btn-primary" type="reset">Şifre Güncelleme</button></a>
+                                </div>
+
+
+                         
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+{% endblock content %}

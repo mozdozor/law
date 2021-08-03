@@ -11,6 +11,7 @@ class IletisimModelForm(forms.ModelForm):
         widgets = {
             "isim" : TextInput(attrs={"class":"form-control"}),
             "email" : EmailInput(attrs={"type":"email","class":"form-control"}),
+            "phone" : TextInput(attrs={"class":"form-control"}),
             "subject" : TextInput(attrs={"class":"form-control"}),
             "message" : Textarea(attrs={"class":"form-control"}),       
           
