@@ -90,10 +90,10 @@ class HakkimizdaModel(models.Model):
     title=models.CharField(max_length=100,blank=False,null=False)
     yazi=RichTextUploadingField(blank=False,null=False)
     image=models.ImageField(
-        upload_to="hakkimizda_images",
+        upload_to="hakkimizda_images",verbose_name="Anasayfa Fotoğrafı"
     )
     image_single=models.ImageField(
-        upload_to="hakkimizda_images",default=""
+        upload_to="hakkimizda_images",default="",verbose_name="Tek Sayfa Hakkımızda Fotoğrafı"
     )
     created_date=models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now=True)

@@ -1,0 +1,135 @@
+{% extends 'baseAdmin.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>Review</title>
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+
+<main class="main-wrapper clearfix">
+
+
+
+    <!-- /.container-fluid -->
+    <!-- =================================== -->
+    <!-- Different data widgets ============ -->
+    <!-- =================================== -->
+    <div class="container-fluid">
+        <div class="widget-list">
+            <div class="row">
+                <div class="col-md-12 widget-holder">
+                    <div class="widget-bg-transparent">
+                        <div class="widget-body clearfix">
+                            <!-- Products List -->
+                            <div class="ecommerce-products list-unstyled row">
+
+
+
+                                {% if not reviews %}
+                               
+                                <h3 style="color: white;">Hiç slider bulunamadı.</h3>
+                                {% endif %}
+
+                                
+                             
+
+
+
+                                {% for review in reviews %}
+
+
+
+                                <div class="product col-12 col-sm-6 col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a href="">
+                                                <img src="{% static 'img/review.png' %}"
+                                                    alt=""> <span class="triangle-top-right"></span>
+                                            </a>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <h5 class="product-title">{{review.name}} (
+                                                    {{review.dava}})</h5>
+                                            </div>
+                                            <!-- /.d-flex --> <span class="text-muted">{{review.review|truncatechars:25|safe}} (
+                                                {{review.created_date.date}})</span><br><a style="float: right;" onclick="return confirm('Bu değerlendirmeyi silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deleteReviewAdmin' review.pk %}" class="btn btn-danger btn-xs">Sil</a>
+                                        </div>
+                                        <!-- /.card-body -->
+                                     
+                                       
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.product -->
+                                {% endfor %}
+
+
+
+                            </div>
+                            <!-- /.ecommerce-products -->
+                            <!-- Product Navigation -->
+
+                            {% if  reviews %}
+
+
+
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination pagination-lg d-flex justify-content-center">
+
+                                        {% if reviews.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{reviews.previous_page_number}}"
+                                                tabindex="-1" aria-disabled="true">Önceki Sayfa</a>
+                                        </li>
+                                        {% else %}
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Önceki</a>
+                                        </li>
+                                        {% endif %}
+
+                                        <li class="page-item"><a class="page-link" href="#">{{reviews.number}}</a></li>
+                                        {% if reviews.has_next %}
+                                        <li class="page-item"><a class="page-link"
+                                                href="?page={{reviews.next_page_number}}">Sonraki</a></li>
+
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{reviews.paginator.num_pages}}">Son
+                                                Sayfa</a>
+                                        </li>
+
+
+                                        {% endif %}
+
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            {% endif %}
+                            <!-- /.col-md-12 -->
+                        </div>
+                        <!-- /.widget-body -->
+                    </div>
+                    <!-- /.widget-bg -->
+                </div>
+                <!-- /.widget-holder -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.widget-list -->
+    </div>
+    <!-- /.container-fluid -->
+</main>
+<!-- /.main-wrappper -->
+
+
+{% endblock content %}

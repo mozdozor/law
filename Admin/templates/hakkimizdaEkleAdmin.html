@@ -1,0 +1,77 @@
+{% extends 'baseAdmin.html' %}
+
+
+
+
+{% block content %}
+    
+
+    
+  
+        <!-- /.site-sidebar -->
+        <main class="main-wrapper clearfix">
+
+
+
+  
+          
+            <div class="container-fluid">
+                <div class="widget-list">
+                    <div class="row">
+					
+					
+
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                
+                            {% if message.tags == "error" %}
+                            <div class="alert alert-danger" role="alert">
+                                
+                                
+                                <center><strong>{{message}}</strong></center>
+                            </div>
+                            {% else %}
+                            <div class="alert alert-success" role="alert">
+                
+                                <center><strong>{{message}}</strong></center>
+                            </div>
+                            {% endif %}
+                
+                
+                
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                
+					
+						
+                     
+                        <div class="col-md-12 widget-holder">
+                            <div class="widget-bg">
+                                <div class="widget-body clearfix">
+                                   
+                                    <form action="{% url 'hakkimizdaEkleAdmin' %}" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{form.media}}
+                                        {{form.as_p}}
+                                        <br>
+                                        <input type="submit" class="btn btn-warning" value="Kaydet">
+
+                                 
+                                      
+                                    </form>
+                                </div>
+                                <!-- /.widget-body -->
+                            </div>
+                            <!-- /.widget-bg -->
+                        </div>
+                        <!-- /.widget-holder -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.widget-list -->
+            </div>
+            <!-- /.container-fluid -->
+        </main>
+        {% endblock content %}

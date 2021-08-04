@@ -29,18 +29,22 @@
                         <ul class="list-unstyled sub-menu">
                             <li><a href="{% url 'indexAdmin' %}">Anasayfa</a>
                             </li>
-                            <li><a href="{% url 'indexAdmin' %}">Slider</a>
+                            <li><a href="{% url 'sliderAdmin' %}">Sliderlar</a>
                             </li>
-                            <li><a href="{% url 'indexAdmin' %}">Müşteri Değerlendirmeleri</a>
+                            <li><a href="{% url 'sliderEkleAdmin' %}">Slider Oluştur</a>
                             </li>
-                            <li><a href="{% url 'indexAdmin' %}">Sorular</a>
+                            <li><a href="{% url 'reviewAdmin' %}">Müşteri Değerlendirmeleri</a>
                             </li>
+                            <!-- <li><a href="{% url 'indexAdmin' %}">Sorular</a>
+                            </li> -->
                             
                         </ul>
                     </li>
                     <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">info</i> <span class="hide-menu">Hakkımızda</span></a>
                         <ul class="list-unstyled sub-menu">
-                            <li><a href="">Hakkımızda</a>
+                            <li><a href="{% url 'hakkimizdaAdmin' %}">Hakkımızda</a>
+                            </li>
+                            <li><a href="{% url 'hakkimizdaEkleAdmin' %}">Hakkımızda Oluştur</a>
                             </li>
                             <li><a href="">Zaman Çizelgesi</a>
                             </li>
