@@ -31,9 +31,9 @@
                             </li>
                             <li><a href="{% url 'sliderAdmin' %}">Sliderlar</a>
                             </li>
-                            <li><a href="{% url 'sliderEkleAdmin' %}">Slider Oluştur</a>
-                            </li>
                             <li><a href="{% url 'reviewAdmin' %}">Müşteri Değerlendirmeleri</a>
+                            </li>
+                            <li><a href="{% url 'showUsersAdmin' %}">Kullanıcılar</a>
                             </li>
                             <!-- <li><a href="{% url 'indexAdmin' %}">Sorular</a>
                             </li> -->
@@ -44,35 +44,33 @@
                         <ul class="list-unstyled sub-menu">
                             <li><a href="{% url 'hakkimizdaAdmin' %}">Hakkımızda</a>
                             </li>
-                            <li><a href="{% url 'hakkimizdaEkleAdmin' %}">Hakkımızda Oluştur</a>
+                            <li><a href="{% url 'TimelineAdmin' %}">Zaman Çizelgeleri</a>
                             </li>
-                            <li><a href="">Zaman Çizelgesi</a>
+                            <li><a href="{% url 'AvukatlarAdmin' %}">Avukatlar</a>
                             </li>
-                            <li><a href="">Avukatlar</a>
-                            </li>
+                            
                            
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">work</i> <span class="hide-menu">Çalışma Alanları</span></a>
                         <ul class="list-unstyled sub-menu">
-                            <li><a href="">Çalışma Alanlarımız</a>
+                            <li><a href="{% url 'CalismaAlanlariAdmin' %}">Çalışma Alanlarımız</a>
                             </li>
-                            <li><a href="">Neden Biz?</a>
+                            <li><a href="{% url 'NedenBizAdmin' %}">Neden Biz?</a>
                             </li>
-                            <li><a href="">Neden Biz Fotoğrafı</a>
-                            </li>
+                            
                            
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">account_box</i> <span class="hide-menu">Profil İşlemleri</span></a>
                         <ul class="list-unstyled sub-menu">
-                            <li><a href="">Profilim</a>
+                            <li><a href="{% url 'showProfileAdmin' %}">Profilim</a>
                             </li>
-                            <li><a href="">Profil Güncelle</a>
+                            <li><a href="{% url 'updateProfileAdmin' %}">Profil Güncelle</a>
                             </li>
-                            <li><a href="">Şifre Güncelle</a>
+                            <li><a href="{% url 'changePasswordAdmin' %}">Şifre Güncelle</a>
                             </li>
                             
                             
@@ -81,9 +79,9 @@
 
                     <li class="menu-item-has-children"><a href="javascript:void(0);"><i class="list-icon material-icons">contact_mail</i> <span class="hide-menu">İletişim</span></a>
                         <ul class="list-unstyled sub-menu">
-                            <li><a href="">Mailler</a>
+                            <li><a href="{% url 'mailListAdmin' %}">Mailler</a>
                             </li>
-                            <li><a href="">İletişim Bilgilerimiz</a>
+                            <li><a href="{% url 'IletisimBilgilerAdmin' %}">İletişim Bilgilerimiz</a>
                             </li>
                           
                             

@@ -1,6 +1,6 @@
 {% extends 'baseAdmin.html' %}
 
-
+{% load static %}
 
 
 {% block content %}
@@ -43,7 +43,13 @@
                                 {% csrf_token %}
                                 <center>
                                 <figure class="profile-user-avatar thumb-md">
+                                   
+                                    {% if request.user.avatar %}
                                     <img src="{{request.user.avatar.url}}" alt="User Wall">
+                                    {% else %}
+                                        <img src="{% static 'img/avatar.png' %}" alt="User Wall">
+                                    {% endif %}
+                                        
                                 </figure>
                             </center>
                              <br><br><br>

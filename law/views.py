@@ -61,7 +61,7 @@ def iletisim(request):
 
 def hakkimizda(request): 
     hakkimizda=HakkimizdaModel.objects.first()
-    timelines=TimelineModel.objects.all()
+    timelines=TimelineModel.objects.all().order_by("-tarih")
     avukatlar=AvukatModel.objects.all()
     context = {
         "hakkimizda":hakkimizda,

@@ -46,7 +46,7 @@
                                 <div class="form-group row">
                                     <label class="text-left text-sm-right col-form-label col-sm-3">Name</label>
                                     <div class="col-sm-9">
-                                        <input style="color: blanchedalmond;" type="text" disabled name="email" value="{{email.name}}" class="form-control" required=""
+                                        <input style="color: blanchedalmond;" type="text" disabled name="email" value="{{email.isim}}" class="form-control" required=""
                                             data-validation="email">
                                     </div>
 
@@ -74,7 +74,7 @@
                                         Created Date</label>
                                     <div class="col-sm-9">
                                         <input style="color: blanchedalmond;"  type="text" name="pass" class="form-control"
-                                           disabled value="{{email.olusturulma_tarihi.date}}">
+                                           disabled value="{{email.created_date.date}}">
                                     </div>
 
                                 </div>
@@ -85,7 +85,7 @@
                                     <label class="text-left text-sm-right col-form-label col-sm-3">
                                         Message</label>
                                     <div class="col-sm-9">
-                                        <textarea disabled  style="color: blanchedalmond;" class="form-control" name="" id="" cols="30" rows="10">{{email.mesaj}}</textarea>
+                                        <textarea disabled  style="color: blanchedalmond;" class="form-control" name="" id="" cols="30" rows="10">{{email.message}}</textarea>
                                         
                                     </div>
 

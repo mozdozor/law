@@ -43,7 +43,7 @@
                                 </div>
                                 <!-- /.widget-heading -->
                                 <div class="widget-body clearfix">
-                                    <table style="width: 650px;" class="table table-editable table-responsive" data-toggle="datatables">
+                                    <table style="width: 950px;" class="table table-editable table-responsive" data-toggle="datatables">
                                         <center>
                                         
                                         <thead>
@@ -53,7 +53,7 @@
                                                 <th>Last Name</th>
                                                 <th>is Superuser</th>
                                                 <th>Started On</th>
-                                                <th>Post Count</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody style="color: black;">
@@ -71,7 +71,7 @@
                                                     {% endif %}
                                                         </td>
                                                     <td>{{user.date_joined.date}}</td>
-                                                    <td>{{user.articles.count}}</td>
+                                                   
                                                 </tr>
                                            {% endfor %}
                                                

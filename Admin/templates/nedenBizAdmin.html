@@ -3,7 +3,7 @@
 
 
 {% block title %}
-<title>Hakkımızda</title>
+<title>Neden Biz</title>
 {% endblock title %}
 
 
@@ -32,9 +32,9 @@
 
 
 
-                                {% if not hakkimizda %}
+                                {% if not nedenbizler %}
                                
-                                <h3 style="color: white;">Hiç hakkımızda bulunamadı.</h3>
+                                <h3 style="color: white;">Hiç nedenbiz bulunamadı.</h3>
                                 {% endif %}
 
                                 
@@ -42,25 +42,26 @@
 
 
 
-                                {% for hak in hakkimizda %}
+                                {% for nedenbiz in nedenbizler %}
 
 
 
                                 <div class="product col-12 col-sm-6 col-md-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a  href="{% url 'hakkimizdaUpdateAdmin' hak.pk %}">
-                                                <img src="{{hak.image.url}}"
-                                                    alt=""> <span class="triangle-top-right"></span>
+                                            <a href="{% url 'NedenBizUpdateAdmin' nedenbiz.pk %}">
+                                               
+                                                    <i class="{{nedenbiz.icon}}"></i>
+                                               
                                             </a>
                                         </div>
                                         <!-- /.card-header -->
                                         <div class="card-body">
                                             <div class="d-flex">
-                                                <h5 class="product-title">{{hak.title}}</h5>
+                                                <a href="{% url 'NedenBizUpdateAdmin' nedenbiz.pk %}"><h5 class="product-title">{{nedenbiz.title}}</h5></a>
                                             </div>
-                                            <!-- /.d-flex --> <span class="text-muted">{{hak.yazi|truncatechars:25|safe}} (
-                                                {{hak.created_date.date}})</span><br><a style="float: right;" onclick="return confirm('Bu hakkımızda yazısını silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deleteHakkimizdaAdmin' hak.pk %}" class="btn btn-danger btn-xs">Sil</a>
+                                            <!-- /.d-flex --> <span class="text-muted">{{nedenbiz.content|truncatechars:25|safe}} (
+                                                {{nedenbiz.created_date.date}})</span><br><a style="float: right;" onclick="return confirm('Bu öğeyi silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deleteNedenBizAdmin' nedenbiz.pk %}" class="btn btn-danger btn-xs">Sil</a>
                                         </div>
                                         <!-- /.card-body -->
                                      
@@ -70,17 +71,31 @@
                                 </div>
                                 <!-- /.product -->
                                 {% endfor %}
-
+                                
+                               
 
 
                             </div>
+                            <center>
+                                <a href="{% url 'NedenBizEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Oluştur</a>
+                                <br><br><br>
+                                <figure class="profile-user-avatar thumb-md">
+                                    <img src="{{image.image.url}}" alt="User Wall">
+                                </figure>
+                            </center>
+                            <!-- /.ecommerce-products -->
+                            <!-- Product Navigation -->
 
-                            <br>
+
+                            <!-- /.col-md-12 -->
+                        </div><br>
+                        
                        
-                           <center> <a href="{% url 'hakkimizdaEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Ekle (Eskisi Silinir)</a></center>
+                           <center> 
+                            <a href="{% url 'NedenBizImageUpdateAdmin' image.pk %}" style="color: black;" class="btn btn-success">Fotoğrafı Güncelle</a>
+                            <a href="{% url 'NedenBizImageEkleAdmin' %}" style="color: black;" class="btn btn-success">Foto Ekle(Eskisi Silinir)</a>
+                        </center>
 
-                           
-                        </div>
                         <!-- /.widget-body -->
                     </div>
                     <!-- /.widget-bg -->

@@ -1,17 +1,18 @@
 
-# from django import template
+from law.models import IletisimModel
+from django import template
 
 
 
-# register=template.Library()
+register=template.Library()
 
 
 
 
-# @register.simple_tag
-# def messageExistAdmin():
-#     emails=IletisimModel.objects.filter(okundu_bilgisi="okunmadı")
-#     return emails
+@register.simple_tag
+def messageExistAdmin():
+    emails=IletisimModel.objects.filter(okundu_mu="no")
+    return emails
 
 
 

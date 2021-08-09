@@ -1,8 +1,13 @@
 
 from django.urls import path
 from .views import (
-     indexAdmin,loginAdmin,logoutAdmin,sliderAdmin,sliderUpdateAdmin,sliderEkleAdmin,deleteSliderAdmin,reviewAdmin,
-     deleteReviewAdmin,hakkimizdaUpdateAdmin,hakkimizdaAdmin,hakkimizdaEkleAdmin
+     indexAdmin,loginAdmin,logoutAdmin, showProfileAdmin,sliderAdmin,sliderUpdateAdmin,sliderEkleAdmin,deleteSliderAdmin,reviewAdmin,
+     deleteReviewAdmin,hakkimizdaUpdateAdmin,hakkimizdaAdmin,hakkimizdaEkleAdmin,deleteHakkimizdaAdmin,TimelineAdmin,
+     deleteTimelineAdmin,TimelineUpdateAdmin,TimelineEkleAdmin,AvukatlarAdmin,AvukatUpdateAdmin,AvukatEkleAdmin,
+     deleteAvukatAdmin,CalismaAlanlariAdmin,AlanUpdateAdmin,AlanEkleAdmin,deleteAlanAdmin,NedenBizAdmin,NedenBizUpdateAdmin,
+     NedenBizEkleAdmin,deleteNedenBizAdmin,NedenBizImageUpdateAdmin,NedenBizImageEkleAdmin, updateProfileAdmin,changePasswordAdmin,
+     mailListAdmin,showMessage,deleteEmailAdmin,IletisimBilgilerAdmin,IletisimBilgilerUpdateAdmin,IletisimBilgilerEkleAdmin,
+     showUsersAdmin,
 )
 
 
@@ -19,4 +24,33 @@ urlpatterns = [
     path('hakkimizdaAdmin',hakkimizdaAdmin,name="hakkimizdaAdmin"),
     path('hakkimizdaEkleAdmin',hakkimizdaEkleAdmin,name="hakkimizdaEkleAdmin"),
     path('hakkimizdaUpdateAdmin/<int:pk>',hakkimizdaUpdateAdmin,name="hakkimizdaUpdateAdmin"),
+    path('deleteHakkimizdaAdmin/<int:pk>',deleteHakkimizdaAdmin,name="deleteHakkimizdaAdmin"),
+    path('TimelineAdmin',TimelineAdmin,name="TimelineAdmin"),
+    path('deleteTimelineAdmin/<int:pk>',deleteTimelineAdmin,name="deleteTimelineAdmin"),
+    path('TimelineUpdateAdmin/<int:pk>',TimelineUpdateAdmin,name="TimelineUpdateAdmin"),
+    path('TimelineEkleAdmin',TimelineEkleAdmin,name="TimelineEkleAdmin"),
+    path('AvukatlarAdmin',AvukatlarAdmin,name="AvukatlarAdmin"),
+    path('AvukatUpdateAdmin/<int:pk>',AvukatUpdateAdmin,name="AvukatUpdateAdmin"),
+    path('AvukatEkleAdmin',AvukatEkleAdmin,name="AvukatEkleAdmin"),
+    path('deleteAvukatAdmin/<int:pk>',deleteAvukatAdmin,name="deleteAvukatAdmin"),
+    path('CalismaAlanlariAdmin',CalismaAlanlariAdmin,name="CalismaAlanlariAdmin"),
+    path('AlanUpdateAdmin/<int:pk>',AlanUpdateAdmin,name="AlanUpdateAdmin"),
+    path('AlanEkleAdmin',AlanEkleAdmin,name="AlanEkleAdmin"),
+    path('deleteAlanAdmin/<int:pk>',deleteAlanAdmin,name="deleteAlanAdmin"),
+    path('NedenBizAdmin',NedenBizAdmin,name="NedenBizAdmin"),
+    path('NedenBizUpdateAdmin/<int:pk>',NedenBizUpdateAdmin,name="NedenBizUpdateAdmin"),
+    path('NedenBizEkleAdmin',NedenBizEkleAdmin,name="NedenBizEkleAdmin"),
+    path('deleteNedenBizAdmin/<int:pk>',deleteNedenBizAdmin,name="deleteNedenBizAdmin"),
+    path('NedenBizImageUpdateAdmin/<int:pk>',NedenBizImageUpdateAdmin,name="NedenBizImageUpdateAdmin"),
+    path('NedenBizImageEkleAdmin',NedenBizImageEkleAdmin,name="NedenBizImageEkleAdmin"),
+    path('showProfileAdmin',showProfileAdmin,name="showProfileAdmin"),
+    path('updateProfileAdmin',updateProfileAdmin,name="updateProfileAdmin"),
+    path('changePasswordAdmin',changePasswordAdmin,name="changePasswordAdmin"),
+    path('mailListAdmin',mailListAdmin,name="mailListAdmin"),
+    path('showMessage/<int:pk>',showMessage,name="showMessage"),
+    path('deleteEmailAdmin/<int:pk>',deleteEmailAdmin,name="deleteEmailAdmin"),
+    path('IletisimBilgilerAdmin',IletisimBilgilerAdmin,name="IletisimBilgilerAdmin"),
+    path('IletisimBilgilerUpdateAdmin/<int:pk>',IletisimBilgilerUpdateAdmin,name="IletisimBilgilerUpdateAdmin"),
+    path('IletisimBilgilerEkleAdmin',IletisimBilgilerEkleAdmin,name="IletisimBilgilerEkleAdmin"),
+    path('showUsersAdmin',showUsersAdmin,name="showUsersAdmin"),
 ]

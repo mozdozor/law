@@ -15,12 +15,16 @@ import os
 import environ
 
 
-env = environ.Env()
-environ.Env.read_env()
-
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',  
+    #'environ',
     'ckeditor_uploader',
     'law',
     'Admin',
@@ -146,6 +151,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media/")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 
 

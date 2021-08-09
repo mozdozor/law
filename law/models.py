@@ -1,8 +1,11 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import AbstractUser, User
 
 # Create your models here.
+
+
 
 
 
@@ -111,8 +114,8 @@ class HakkimizdaModel(models.Model):
 
 class TimelineModel(models.Model):
     title=models.CharField(max_length=100,blank=False,null=False)
-    yazi=models.TextField(max_length=200,blank=False,null=False)
-    tarih=models.CharField(max_length=4,blank=False,null=False)
+    yazi=models.TextField(max_length=300,blank=False,null=False)
+    tarih=models.SmallIntegerField(blank=False,null=False)
     created_date=models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now=True)
        
@@ -134,10 +137,10 @@ class AvukatModel(models.Model):
     image=models.ImageField(
         upload_to="avukat_images",
     )
-    twitter=models.CharField(max_length=100,blank=False,null=False)
-    facebook=models.CharField(max_length=100,blank=False,null=False)
-    linkedin=models.CharField(max_length=100,blank=False,null=False)
-    instagram=models.CharField(max_length=100,blank=False,null=False)
+    twitter=models.CharField(max_length=100,blank=True,null=True)
+    facebook=models.CharField(max_length=100,blank=True,null=True)
+    linkedin=models.CharField(max_length=100,blank=True,null=True)
+    instagram=models.CharField(max_length=100,blank=True,null=True)
     created_date=models.DateTimeField(auto_now_add=True)
     updated_date=models.DateTimeField(auto_now=True)
        

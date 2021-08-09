@@ -3,7 +3,7 @@
 
 
 {% block title %}
-<title>Hakkımızda</title>
+<title>İletişim Bilgileri</title>
 {% endblock title %}
 
 
@@ -32,9 +32,9 @@
 
 
 
-                                {% if not hakkimizda %}
+                                {% if not iletisim %}
                                
-                                <h3 style="color: white;">Hiç hakkımızda bulunamadı.</h3>
+                                <h3 style="color: white;">Hiç iletisim bilgisi bulunamadı.</h3>
                                 {% endif %}
 
                                 
@@ -42,25 +42,20 @@
 
 
 
-                                {% for hak in hakkimizda %}
+    
 
 
 
                                 <div class="product col-12 col-sm-6 col-md-4">
                                     <div class="card">
-                                        <div class="card-header">
-                                            <a  href="{% url 'hakkimizdaUpdateAdmin' hak.pk %}">
-                                                <img src="{{hak.image.url}}"
-                                                    alt=""> <span class="triangle-top-right"></span>
-                                            </a>
-                                        </div>
+                                       
                                         <!-- /.card-header -->
                                         <div class="card-body">
                                             <div class="d-flex">
-                                                <h5 class="product-title">{{hak.title}}</h5>
+                                                <a href="{% url 'IletisimBilgilerUpdateAdmin' iletisim.pk %}"> <h5 class="product-title">{{iletisim.telefon}}</h5></a>
+                                               
                                             </div>
-                                            <!-- /.d-flex --> <span class="text-muted">{{hak.yazi|truncatechars:25|safe}} (
-                                                {{hak.created_date.date}})</span><br><a style="float: right;" onclick="return confirm('Bu hakkımızda yazısını silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deleteHakkimizdaAdmin' hak.pk %}" class="btn btn-danger btn-xs">Sil</a>
+                                            <!-- /.d-flex --> <span class="text-muted">{{iletisim.konum|truncatechars:25|safe}}</span><br><a style="float: right;" onclick="return confirm('Bu hakkımızda yazısını silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="" class="btn btn-danger btn-xs">Sil</a>
                                         </div>
                                         <!-- /.card-body -->
                                      
@@ -69,7 +64,7 @@
                                     <!-- /.card -->
                                 </div>
                                 <!-- /.product -->
-                                {% endfor %}
+                        
 
 
 
@@ -77,7 +72,7 @@
 
                             <br>
                        
-                           <center> <a href="{% url 'hakkimizdaEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Ekle (Eskisi Silinir)</a></center>
+                           <center> <a href="{% url 'IletisimBilgilerEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Ekle (Eskisi Silinir)</a></center>
 
                            
                         </div>

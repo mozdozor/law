@@ -1,5 +1,10 @@
 {% extends 'baseAdmin.html' %}
-{% load static %}
+
+{% block title %}
+<title>Zaman Çizelgesi</title>
+{% endblock title %}
+
+
 
 
 
@@ -40,19 +45,16 @@
                     <div class="widget-bg">
                         <div class="widget-body clearfix">
 
-                            <form action="{% url 'updateProfileAdmin' %}" method="POST" enctype="multipart/form-data">
+                            <form 
+                            {% if update %}
+                                action="{% url 'TimelineUpdateAdmin' pk=item.pk %}"
+                            {% else %}
+                                action="{% url 'TimelineEkleAdmin' %}"
+                                
+                            {% endif %}
+                                 method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <center>
-                                    <figure class="profile-user-avatar thumb-md">
-                                        
-                                        {% if request.user.avatar %}
-                                            <img src="{{request.user.avatar.url}}" alt="User Wall">
-                                        {% else %}
-                                        <img src="{% static 'img/avatar.png' %}" alt="User Wall">
-                                        {% endif %}
-                                            
-                                    </figure>
-                                </center>
+                               
                                 <br>
 
 
@@ -81,9 +83,8 @@
 
 
                                 <br><br>
-
+                                {{form.media}}
                                 {{form.as_p}}
-                                {{form1.as_p}}
 
 
                                 <br><br>

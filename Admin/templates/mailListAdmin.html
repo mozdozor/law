@@ -43,7 +43,7 @@
                                 </div>
                                 <!-- /.widget-heading -->
                                 <div class="widget-body clearfix">
-                                    <table style="width: 850px;" class="table table-editable table-responsive" data-toggle="datatables">
+                                    <table  class="table table-editable table-responsive" data-toggle="datatables">
                                         <center>
                                         
                                         <thead>
@@ -63,15 +63,15 @@
                                            {% for mail in mails %}
                                                 <tr data-expanded="true">
                                                     <td>{{mail.pk}}</td>
-                                                    <td>{{mail.name}}</td>
+                                                    <td>{{mail.isim}}</td>
                                                     <td>{{mail.email}}</td>
                                                     <td>{{mail.subject}}</td>
-                                                    <td>{{mail.olusturulma_tarihi.date}}</td>
-                                                    <td>
-                                                    {% if mail.okundu_bilgisi == "1" %}
+                                                    <td>{{mail.created_date.date}}</td>
+                                                    <td> 
+                                                    {% if mail.okundu_mu == "yes" %}
                                                     <p style="color: green;">okundu</p>
-                                                        {% else %}
-                                                        <p style="color: red;">okunmadı</p>
+                                                    {% else %}
+                                                    <p style="color: red;">okunmadı</p>
                                                     {% endif %}
                                                         </td>
                                                     <td><a class="btn btn-success btn-xs" href="{% url 'showMessage' mail.pk %}">Read</a></td>

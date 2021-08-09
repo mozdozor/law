@@ -3,7 +3,7 @@
 
 
 {% block title %}
-<title>Slider</title>
+<title>Zaman Çizelgesi</title>
 {% endblock title %}
 
 
@@ -32,9 +32,9 @@
 
 
 
-                                {% if not sliders %}
+                                {% if not timelines %}
                                
-                                <h3 style="color: white;">Hiç slider bulunamadı.</h3>
+                                <h3 style="color: white;">Hiç zaman çizelgesi bulunamadı.</h3>
                                 {% endif %}
 
                                 
@@ -42,25 +42,25 @@
 
 
 
-                                {% for slider in sliders %}
+                                {% for timeline in timelines %}
 
 
 
                                 <div class="product col-12 col-sm-6 col-md-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="{% url 'sliderUpdateAdmin' slider.pk %}">
-                                                <img src="{{slider.image.url}}"
+                                            <a  href="">
+                                                <img src=""
                                                     alt=""> <span class="triangle-top-right"></span>
                                             </a>
                                         </div>
                                         <!-- /.card-header -->
                                         <div class="card-body">
                                             <div class="d-flex">
-                                                <h5 class="product-title">{{slider.top_title}}</h5>
+                                                <a href="{% url 'TimelineUpdateAdmin' timeline.pk %}"><h5 class="product-title">{{timeline.tarih}} (
+                                                    {{timeline.title}})</h5></a>
                                             </div>
-                                            <!-- /.d-flex --> <span class="text-muted">{{slider.bottom_title|truncatechars:25|safe}} (
-                                                {{slider.created_date.date}})</span><br><a style="float: right;" onclick="return confirm('Bu slideri silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deleteSliderAdmin' pk=slider.pk %}" class="btn btn-danger btn-xs">Sil</a>
+                                            <!-- /.d-flex --> <span class="text-muted">{{timeline.yazi|truncatechars:25|safe}}</span><br><a style="float: right;" onclick="return confirm('Bu timeline yazısını silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="{% url 'deleteTimelineAdmin' timeline.pk %}" class="btn btn-danger btn-xs">Sil</a>
                                         </div>
                                         <!-- /.card-body -->
                                      
@@ -77,7 +77,7 @@
                             <!-- /.ecommerce-products -->
                             <!-- Product Navigation -->
 
-                            {% if  sliders %}
+                            {% if  timelines %}
 
 
 
@@ -85,9 +85,9 @@
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination pagination-lg d-flex justify-content-center">
 
-                                        {% if sliders.has_previous %}
+                                        {% if timelines.has_previous %}
                                         <li class="page-item">
-                                            <a class="page-link" href="?page={{sliders.previous_page_number}}"
+                                            <a class="page-link" href="?page={{timelines.previous_page_number}}"
                                                 tabindex="-1" aria-disabled="true">Önceki Sayfa</a>
                                         </li>
                                         {% else %}
@@ -96,13 +96,13 @@
                                         </li>
                                         {% endif %}
 
-                                        <li class="page-item"><a class="page-link" href="#">{{sliders.number}}</a></li>
-                                        {% if sliders.has_next %}
+                                        <li class="page-item"><a class="page-link" href="#">{{timelines.number}}</a></li>
+                                        {% if timelines.has_next %}
                                         <li class="page-item"><a class="page-link"
-                                                href="?page={{sliders.next_page_number}}">Sonraki</a></li>
+                                                href="?page={{timelines.next_page_number}}">Sonraki</a></li>
 
                                         <li class="page-item">
-                                            <a class="page-link" href="?page={{sliders.paginator.num_pages}}">Son
+                                            <a class="page-link" href="?page={{timelines.paginator.num_pages}}">Son
                                                 Sayfa</a>
                                         </li>
 
@@ -119,7 +119,7 @@
 
                         <br>
                        
-                        <center> <a href="{% url 'sliderEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Oluştur</a></center>
+                        <center> <a href="{% url 'TimelineEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Oluştur</a></center>
 
 
                         <!-- /.widget-body -->

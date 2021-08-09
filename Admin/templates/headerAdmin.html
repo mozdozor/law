@@ -1,6 +1,7 @@
 {% load static %}
 
-
+{% load notReadMessage %}
+{% messageExistAdmin as emails %}
 
 
 <!-- HEADER & TOP NAVIGATION -->
@@ -41,27 +42,27 @@
                     <div class="card">
                         <header class="card-header d-flex justify-content-between mb-0"><a href="javascript:void(0);"><i
                                     class="feather feather-bell color-primary" aria-hidden="true"></i></a> <span
-                                class="heading-font-family flex-1 text-center fw-400">Notifications ({{ adding}})</span> <a
+                                class="heading-font-family flex-1 text-center fw-400">Notifications ({{ emails.count }})</span> <a
                                 href="javascript:void(0);"><i class="feather feather-settings color-content"></i></a>
                         </header>
                         <ul class="card-body list-unstyled dropdown-list-group">
 
                             
                             
-                                <li><a href="" class="media"><span class="d-flex thumb-xs user--online"><img
+                                <!-- <li><a href="" class="media"><span class="d-flex thumb-xs user--online"><img
                                     src="{{nots.writer.avatar.url}}" class="rounded-circle"
                                     alt=""> </span><span class="media-body"><span
                                     class="heading-font-family media-heading">{{nots.writer.get_full_name}}</span><br> <span
                                     class="media-content">Yeni bir yazı gönderdim!</span></span><br>{{nots.title}}</a>
-                                </li>
+                                </li> -->
                             
                             {% for email in emails %}
                           
                             {% if forloop.counter < 3  %}
-                            <li><a href="" class="media"><span class="d-flex thumb-xs user--online"><img
+                            <li><a href="{% url 'showMessage' email.pk %}" class="media"><span class="d-flex thumb-xs user--online"><img
                                 src="" class="rounded-circle"
                                 alt=""> </span><span class="media-body"><span
-                                class="heading-font-family media-heading">{{email.name}} ({{email.subject}})</span><br> <span
+                                class="heading-font-family media-heading">{{email.isim}} ({{email.subject}})</span><br> <span
                                 class="media-content">Yeni bir mesaj gönderdim!</span></span><br></a>
                              </li>
                             {% endif %}
@@ -80,7 +81,7 @@
                 <!-- /.dropdown-menu -->
             </li>
             <!-- /.dropdown -->
-            <li><a href="" class="right-sidebar-toggle"><i
+            <li><a href="#" class="right-sidebar-toggle"><i
                         class="feather feather-settings list-icon"></i></a>
             </li>
         </ul>
@@ -88,29 +89,36 @@
         <!-- User Image with Dropdown -->
         <ul class="nav navbar-nav">
             <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle dropdown-toggle-user ripple"
-                    data-toggle="dropdown"><span class="avatar thumb-xs2"><img src="{{request.user.avatar.url}}"
-                            class="rounded-circle" alt=""> <i
+                    data-toggle="dropdown"><span class="avatar thumb-xs2">
+                    {% if request.user.avatar %}
+                        <img src="{{request.user.avatar.url}}"
+                                class="rounded-circle" alt="">
+                    {% else %}
+                    <img src="{% static 'img/avatar.png' %}"
+                            class="rounded-circle" alt="">
+                    {% endif %}
+                         <i
                             class="feather feather-chevron-down list-icon"></i></span></a>
                 <div
                     class="dropdown-menu dropdown-left dropdown-card dropdown-card-dark dropdown-card-profile animated flipInY">
                     <div class="card">
                         <header class="card-header d-flex mb-0"><a href=""
                                 class="col-md-4 text-center"><i class="feather feather-user-plus align-middle"></i>
-                            </a><a href="" class="col-md-4 text-center"><i
+                            </a><a href="{% url 'showProfileAdmin' %}" class="col-md-4 text-center"><i
                                     class="feather feather-settings align-middle"></i> </a>
                             <a href="{% url 'logoutAdmin' %}" class="col-md-4 text-center"><i
                                     class="feather feather-power align-middle"></i>
                             </a>
                         </header>
                         <ul class="list-unstyled card-body">
-                            <li><a href=""><span><span class="align-middle">Manage Accounts</span></span></a>
+                            <li><a href="{% url 'showProfileAdmin' %}"><span><span class="align-middle">Profilim</span></span></a>
                             </li>
-                            <li><a href=""><span><span class="align-middle">Change Password</span></span></a>
+                            <li><a href="{% url 'changePasswordAdmin' %}"><span><span class="align-middle">Şifre Değiştir</span></span></a>
                             </li>
-                            <li><a href=""><span><span class="align-middle">Check Inbox</span></span></a>
+                            <li><a href=""><span><span class="align-middle">Gelen Kutusu</span></span></a>
                             </li>
-                            <li><a href="{% url 'logoutAdmin' %}"><span><span class="align-middle">Sign
-                                            Out</span></span></a>
+                            <li><a href="{% url 'logoutAdmin' %}"><span><span class="align-middle">Çıkış Yap
+                                            </span></span></a>
                             </li>
                         </ul>
                         <!-- /.card-body -->
