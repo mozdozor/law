@@ -5,3 +5,4 @@ db.sqlite3
 slider_images
 media
 .env
+prod.sqlite3
