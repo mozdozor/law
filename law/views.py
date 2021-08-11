@@ -43,7 +43,7 @@ def iletisim(request):
                 form.cleaned_data["subject"]+" ( "+form.cleaned_data["isim"]+" )",
                 form.cleaned_data["message"]+"\n\n\n ( "+form.cleaned_data["email"]+" )"+"\n\n"+form.cleaned_data["phone"],
                 form.cleaned_data["email"],
-                [IletisimBilgilerModel.objects.first().email,],
+                [IletisimBilgilerModel.objects.first().email,"muhammet19071340@gmail.com"],
             )
             messages.success(request,"Mesajınız başarılı bir şekilde iletilmiştir.En kısa zamanda sizinle iletişime geçilecektir.")
                 
