@@ -1,5 +1,5 @@
 
-from law.forms import AlanModelForm, AvukatModelForm, HakkimizdaModelForm, IletisimBilgilerModelForm, NedenBizImageModelForm, NedenBizModelForm, RegisterForm, SliderModelForm, TimelineModelForm, UserForm
+from law.forms import AlanModelForm, AvukatModelForm, HakkimizdaModelForm, IletisimBilgilerModelForm, NedenBizImageModelForm, NedenBizModelForm, SliderModelForm, TimelineModelForm, UserForm
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate,update_session_auth_hash
@@ -691,23 +691,3 @@ def showUsersAdmin(request):
     return render(request,"usersAdmin.html",context)
 
 
-
-
-# def registerAdmin(request):
-#     if request.method == 'POST':
-#         form = RegisterForm(request.POST)
-#         if form.is_valid():
-#             user=form.save(commit=False)
-#             user.is_staff=True
-#             user.save()
-#             username = form.cleaned_data.get('username')
-#             password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=password)
-#             login(request, user)
-#             return redirect('indexAdmin')
-#     else:
-#         form = RegisterForm()
-    
-#     return render(request, 'pages/kayit.html', context={
-#         'form': form
-#     })
