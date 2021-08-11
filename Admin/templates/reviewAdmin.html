@@ -34,7 +34,7 @@
 
                                 {% if not reviews %}
                                
-                                <h3 style="color: white;">Hiç slider bulunamadı.</h3>
+                                <h3 style="color: white;">Hiç review bulunamadı.</h3>
                                 {% endif %}
 
                                 
@@ -49,7 +49,7 @@
                                 <div class="product col-12 col-sm-6 col-md-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <a href="">
+                                            <a href="{% url 'ReviewUpdateAdmin' review.pk %}">
                                                 <img src="{% static 'img/review.png' %}"
                                                     alt=""> <span class="triangle-top-right"></span>
                                             </a>
@@ -75,6 +75,10 @@
 
 
                             </div>
+                            <br>
+                       
+                           <center> <a href="{% url 'ReviewEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Ekle</a></center>
+                            <br><br>
                             <!-- /.ecommerce-products -->
                             <!-- Product Navigation -->
 

@@ -7,7 +7,7 @@ from django.db.models.fields.files import ImageField
 from django.db.models.query_utils import FilteredRelation
 from django.forms.fields import EmailField
 from django.forms.widgets import EmailInput, FileInput, HiddenInput, NumberInput, Select, TextInput ,Textarea
-from .models import AlanModel, AvukatModel, HakkimizdaModel, IletisimBilgilerModel, IletisimModel, NedenBizImageModel, NedenBizModeli,SliderModel, TimelineModel
+from .models import AlanModel, AvukatModel, HakkimizdaModel, IletisimBilgilerModel, IletisimModel, NedenBizImageModel, NedenBizModeli, ReviewModel,SliderModel, TimelineModel
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -158,5 +158,18 @@ class IletisimBilgilerModelForm(forms.ModelForm):
             "linkedin" : TextInput(attrs={"class":"form-control"}),               
         }
 
+
+
+
+
+class ReviewModelForm(forms.ModelForm):
+    class Meta:
+        model = ReviewModel
+        exclude = ('created_date','updated_date')
+        widgets = {
+            "name" : TextInput(attrs={"class":"form-control"}),
+            "dava" : TextInput(attrs={"class":"form-control"}),
+            "review" : Textarea(attrs={"class":"form-control"})       
+        }
 
 

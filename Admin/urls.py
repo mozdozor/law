@@ -7,7 +7,7 @@ from .views import (
      deleteAvukatAdmin,CalismaAlanlariAdmin,AlanUpdateAdmin,AlanEkleAdmin,deleteAlanAdmin,NedenBizAdmin,NedenBizUpdateAdmin,
      NedenBizEkleAdmin,deleteNedenBizAdmin,NedenBizImageUpdateAdmin,NedenBizImageEkleAdmin, updateProfileAdmin,changePasswordAdmin,
      mailListAdmin,showMessage,deleteEmailAdmin,IletisimBilgilerAdmin,IletisimBilgilerUpdateAdmin,IletisimBilgilerEkleAdmin,
-     showUsersAdmin,
+     showUsersAdmin,ReviewEkleAdmin,ReviewUpdateAdmin,reviewAdmin
 )
 
 
@@ -53,4 +53,7 @@ urlpatterns = [
     path('IletisimBilgilerUpdateAdmin/<int:pk>',IletisimBilgilerUpdateAdmin,name="IletisimBilgilerUpdateAdmin"),
     path('IletisimBilgilerEkleAdmin',IletisimBilgilerEkleAdmin,name="IletisimBilgilerEkleAdmin"),
     path('showUsersAdmin',showUsersAdmin,name="showUsersAdmin"),
+    path('ReviewEkleAdmin',ReviewEkleAdmin,name="ReviewEkleAdmin"),
+    path('ReviewUpdateAdmin/<int:pk>',ReviewUpdateAdmin,name="ReviewUpdateAdmin"),
+    path('reviewAdmin',reviewAdmin,name="reviewAdmin"),
 ]

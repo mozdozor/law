@@ -1,5 +1,5 @@
 
-from law.forms import AlanModelForm, AvukatModelForm, HakkimizdaModelForm, IletisimBilgilerModelForm, NedenBizImageModelForm, NedenBizModelForm, SliderModelForm, TimelineModelForm, UserForm
+from law.forms import AlanModelForm, AvukatModelForm, HakkimizdaModelForm, IletisimBilgilerModelForm, NedenBizImageModelForm, NedenBizModelForm, ReviewModelForm, SliderModelForm, TimelineModelForm, UserForm
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate,update_session_auth_hash
@@ -691,3 +691,44 @@ def showUsersAdmin(request):
     return render(request,"usersAdmin.html",context)
 
 
+
+
+
+@permission_required('is_staff',login_url="loginAdmin")
+def ReviewEkleAdmin(request):
+    if request.method == "POST":
+        form = ReviewModelForm(request.POST or None, files=request.FILES or None)		
+        if form.is_valid():
+            form.save()    
+            messages.success(request,"Review başarıyla eklenmiştir")
+        else:
+            messages.error(request,"Review eklenirken hata oluştu.Lütfen alanları gerektiği gibi doldurunuz")
+    form = ReviewModelForm()
+    context={
+        "form":form,
+        "create":"create",
+    }
+    return render(request=request, template_name="ReviewUpdateAdmin.html",context=context)
+
+
+
+
+@permission_required('is_staff',login_url="loginAdmin")
+def ReviewUpdateAdmin(request,pk):
+    item=get_object_or_404(ReviewModel,pk=pk)
+    form=ReviewModelForm(instance=item)    
+    if request.method == "POST":
+        form = ReviewModelForm(request.POST,request.FILES,instance=item)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Güncelleme başarıyla tamamlanmıştır')
+            return redirect("ReviewUpdateAdmin",pk=item.pk)
+        else:
+            messages.error(request,"Lütfen gereken alanları eksiksiz bir şekilde doldurunuz")
+            return redirect("ReviewUpdateAdmin" ,pk=item.pk)   
+    context={
+        "form":form,
+        "item":item,
+        "update":"update",
+    }
+    return render(request,"ReviewUpdateAdmin.html",context)
