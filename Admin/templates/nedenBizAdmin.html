@@ -79,9 +79,13 @@
                             <center>
                                 <a href="{% url 'NedenBizEkleAdmin' %}" style="color: black;" class="btn btn-success">Yeni Oluştur</a>
                                 <br><br><br>
-                                <figure class="profile-user-avatar thumb-md">
-                                    <img src="{{image.image.url}}" alt="User Wall">
-                                </figure>
+                                
+                                {% if image %}
+                                    <figure class="profile-user-avatar thumb-md">
+                                        <img src="{{image.image.url}}" alt="User Wall">
+                                    </figure>
+                                {% endif %}
+                                    
                             </center>
                             <!-- /.ecommerce-products -->
                             <!-- Product Navigation -->
@@ -92,7 +96,11 @@
                         
                        
                            <center> 
-                            <a href="{% url 'NedenBizImageUpdateAdmin' image.pk %}" style="color: black;" class="btn btn-success">Fotoğrafı Güncelle</a>
+                            
+                            {% if image %}
+                                <a href="{% url 'NedenBizImageUpdateAdmin' image.pk %}" style="color: black;" class="btn btn-success">Fotoğrafı Güncelle</a>
+                            {% endif %}
+                                
                             <a href="{% url 'NedenBizImageEkleAdmin' %}" style="color: black;" class="btn btn-success">Foto Ekle(Eskisi Silinir)</a>
                         </center>
 

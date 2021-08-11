@@ -46,24 +46,28 @@
 
 
 
-                                <div class="product col-12 col-sm-6 col-md-4">
-                                    <div class="card">
-                                       
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <a href="{% url 'IletisimBilgilerUpdateAdmin' iletisim.pk %}"> <h5 class="product-title">{{iletisim.telefon}}</h5></a>
-                                               
+                            {% if iletisim %}
+    
+                                    <div class="product col-12 col-sm-6 col-md-4">
+                                        <div class="card">
+                                           
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <a href="{% url 'IletisimBilgilerUpdateAdmin' iletisim.pk %}"> <h5 class="product-title">{{iletisim.telefon}}</h5></a>
+                                                   
+                                                </div>
+                                                <!-- /.d-flex --> <span class="text-muted">{{iletisim.konum|truncatechars:25|safe}}</span><br><a style="float: right;" onclick="return confirm('Bu hakkımızda yazısını silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="" class="btn btn-danger btn-xs">Sil</a>
                                             </div>
-                                            <!-- /.d-flex --> <span class="text-muted">{{iletisim.konum|truncatechars:25|safe}}</span><br><a style="float: right;" onclick="return confirm('Bu hakkımızda yazısını silmek istediğinizden emin misiniz?\nBu işlem geri alınamaz.');" href="" class="btn btn-danger btn-xs">Sil</a>
+                                            <!-- /.card-body -->
+                                         
+                                           
                                         </div>
-                                        <!-- /.card-body -->
-                                     
-                                       
+                                        <!-- /.card -->
                                     </div>
-                                    <!-- /.card -->
-                                </div>
-                                <!-- /.product -->
+                                    <!-- /.product -->
+                            {% endif %}
+    
                         
 
 

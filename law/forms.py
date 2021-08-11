@@ -8,7 +8,7 @@ from django.db.models.query_utils import FilteredRelation
 from django.forms.fields import EmailField
 from django.forms.widgets import EmailInput, FileInput, HiddenInput, NumberInput, Select, TextInput ,Textarea
 from .models import AlanModel, AvukatModel, HakkimizdaModel, IletisimBilgilerModel, IletisimModel, NedenBizImageModel, NedenBizModeli,SliderModel, TimelineModel
-
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -158,3 +158,19 @@ class IletisimBilgilerModelForm(forms.ModelForm):
             "linkedin" : TextInput(attrs={"class":"form-control"}),               
         }
 
+
+
+
+
+
+# class RegisterForm(UserCreationForm):
+#     class Meta:
+#         model = User
+#         fields = (
+#             'username',
+#             'email',
+#             'first_name',
+#             'last_name',
+#             'password1',
+#             'password2'
+#         )
