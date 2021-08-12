@@ -7,7 +7,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["oguzhancelikarslan.com","127.0.0.1",'18.170.36.229']
+ALLOWED_HOSTS = ["www.aydoganss.com","aydoganss.com","127.0.0.1",'18.170.36.229']
 
 
 
